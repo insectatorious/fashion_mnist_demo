@@ -1,0 +1,11 @@
+cython
+numpy
+pandas
+matplotlib
+scikit-learn
+pydot
+graphviz
+opencv-python
+opencv-python-headless  # mac only?
+pillow
+tensorflow==2.1

@@ -1,0 +1,36 @@
+{
+  "embeddings": [
+    {
+      "tensorName": "Raw Tensors (Flattened)",
+      "tensorShape": [
+        10000,
+       	784
+      ],
+      "metadataPath": "http://0.0.0.0:8000/metadata.tsv",
+      "tensorPath": "http://0.0.0.0:8000/raw_tensors.tsv",
+      "sprite": {
+        "imagePath": "http://0.0.0.0:8000/master.jpg",
+        "singleImageDim": [
+          28,
+          28
+        ]
+      }
+    },
+    {
+      "tensorName": "Embedded Tensors (Flattened)",
+      "tensorShape": [
+        10000,
+       	64
+      ],
+      "metadataPath": "http://0.0.0.0:8000/metadata.tsv",
+      "tensorPath": "http://0.0.0.0:8000/embedding_tensors.tsv",
+      "sprite": {
+        "imagePath": "http://0.0.0.0:8000/master.jpg",
+        "singleImageDim": [
+          28,
+          28
+        ]
+      }
+    }
+  ]
+}
