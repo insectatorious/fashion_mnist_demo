@@ -8,7 +8,7 @@
       ],
       "metadataPath": "https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/metadata.tsv",
       "tensorPath": "https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/embedding_tensors.tsv",
-      "bookmarksPath": "https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/bookmarks.txt",
+      "bookmarksPath": "https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/projector_bookmarks.txt",
       "sprite": {
         "imagePath": "https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/master.jpg",
         "singleImageDim": [
