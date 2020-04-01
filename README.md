@@ -76,13 +76,11 @@ Image 1 | Image 2
 Tensorboard allows users to map projections for datapoints matching certain criteria against each other. 
 In the following examples datapoints matching the 'Sneaker' vectors are projected to the left and those matching 'Ankle' are projected to the right. This can be interpreted as, the more to the left or right a data point is, the more similar it is to a 'Sneaker' or 'Ankle' datapoint. Similarly, 'Bag' and 'Coat' are projected up and down respectively. 
 
-Image 2 shows an example of 'Sandal' images. Most of them are closer to the right making them similar to 'Ankle Boot' but a number of then are also seen on the left making these similar to 'Sneakers'.
+![Image1](docs/images/custom_1.png)
 
-Image 1 | Image 2
----|---
-<img src="docs/images/custom_1.png" width="500"> | <img src="docs/images/custom_2.png" width="500"> 
+The image below :point_down: shows an example of 'Sandal' images highlighted. Most of them are closer to the right making them similar to 'Ankle Boot' but a number of then are also seen on the left making these similar to 'Sneakers'.
 
-
+![Image2](docs/images/custom_2.png)
 
 ## Play With The Vectors Yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
