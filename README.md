@@ -56,12 +56,12 @@ CNN Layer 5 | CNN Layer 6
 ------------|-------------
 <img src="docs/images/visualisations/conv2d_4.png" height="500" width="500"> | <img src="docs/images/visualisations/conv2d_5.png" height="500" width="500">
 
-### Embedding Vectors
+# Embedding Vectors
 An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a low-dimensional representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. 
 
 The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64 dimension vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
 
-#### Principal Component Analysis (PCA)
+## Principal Component Analysis (PCA)
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64` dimension embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
 
 Image 1 | Image 2
@@ -69,14 +69,14 @@ Image 1 | Image 2
 <img src="docs/images/pca_1.png" width="500"> | <img src="docs/images/pca_2.png" width="500"> 
 
 
-#### t-Distributed Stochastic Neighbour Embedding (t-SNE)
+## t-Distributed Stochastic Neighbour Embedding (t-SNE)
 [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) is a non-deterministic algorithm to visualise high dimenional data in lower dimensions whilst retaining spatial information. See [this excellent article on how to effectively use t-SNE](https://distill.pub/2016/misread-tsne/). It's important to note that unlike PCA, t-SNE is not a generalised function that takes high dimensional data and output low dimensional equivalents. Instead, it provides a mapping for known datapoints only. 
 
 Image 1 | Image 2
 ---|---
 <img src="docs/images/tsne_1.png" width="500"> | <img src="docs/images/tnse_2.png" width="500"> 
 
-#### Custom Projections (Tensorboard Only)
+## Custom Projections (Tensorboard Only)
 Tensorboard allows users to map projections for datapoints matching certain criteria against each other. 
 In the following examples datapoints matching the 'Sneaker' vectors are projected to the left and those matching 'Ankle' are projected to the right. This can be interpreted as, the more to the left or right a data point is, the more similar it is to a 'Sneaker' or 'Ankle' datapoint. Similarly, 'Bag' and 'Coat' are projected up and down respectively. 
 
@@ -86,7 +86,7 @@ The image below :point_down: shows an example of 'Sandal' images highlighted. Mo
 
 ![Image2](docs/images/custom_2.png)
 
-## Play With The Vectors Yourself!
+# Play With The Vectors Yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
 
 # Licence
