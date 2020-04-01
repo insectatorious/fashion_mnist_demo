@@ -56,9 +56,9 @@ The transformed image (as detailed above) passes through the network and each of
 |   :---:   |   :---:   |
 | <img src="docs/images/visualisations/conv2d.png" height="500" width="500"> | <img src="docs/images/visualisations/conv2d_1.png" height="500" width="500"> |
 
-:point_up: We see 64 feature maps showing different activations for the bag. Invariably, some of these will be blank as they only activate when detecting edges of other classes (like 'Ankle Boot' or 'Sneaker'). 
+:point_up: We see 64 feature maps in the two layers above showing different activations for the bag. Invariably, some of these will be blank as they only activate when detecting edges of other classes (like 'Ankle Boot' or 'Sneaker'). 
 
-:point_down: The last few convolutional layers do not bear any recognisable resemblance to the input image, however they are showing activations on groups of features. 
+:point_down: The last few convolutional layers (5 & 6) do not bear any recognisable resemblance to the input image, however they are showing activations on groups of features. 
 
 | CNN Layer 5 | CNN Layer 6 |
 |   :---:   |   :---:   |
