@@ -14,3 +14,6 @@ These visualisations cover:
 
 ## Play with the vectors yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
+
+# Licence
+GNU General Public License v3.0
