@@ -99,7 +99,7 @@ def visualise_feature_maps(
 
   elif len(layer_feature_maps.shape) == 2:
     # We have a 1D feature map - need to show a single image
-    plt.rcParams["figure.figsize"] = (figure_size, figure_size)
+    fig = plt.figure(figsize=(figure_size, 1))
     plt.imshow(layer_feature_maps)
     plt.axis("off")
     plt.tight_layout()
