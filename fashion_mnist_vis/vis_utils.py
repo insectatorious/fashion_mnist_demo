@@ -83,7 +83,7 @@ def visualise_feature_maps(
     figure_size: int = 14,
     colour_map: Colormap = plt.cm.get_cmap("viridis")) -> plt.Figure:
   fig = plt.figure(figsize=(figure_size, figure_size))
-  fig.suptitle(f"Layer: {layer_name}", fontsize=16)
+  # fig.suptitle(f"Layer: {layer_name}", fontsize=16)
 
   if len(layer_feature_maps.shape) == 4:
     #  We have a 2D feature map - need to show a grid
