@@ -32,7 +32,7 @@ A black handbag from Argos is chosen as our input - [KIPLING Black Art Mini Hand
 
 Model classification: `Bag` with a score of `0.9213`.
 
-Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to work on data that is from a completely domain is fundamental to proving its effectiveness.
+Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to correctly classif data that is from a different source (but still in line with the training dataset's patterns) is fundamental to proving its effectiveness.
 
 ### Transformations To Input Image
 The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
