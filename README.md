@@ -55,7 +55,7 @@ An [embedding vector](https://developers.google.com/machine-learning/crash-cours
 The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64-dim vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
 
 #### Principal component analysis (PCA)
-[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple but powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64-dim` embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
+[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64-dim` embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
 
 Image 1 | Image 2
 ----|----
@@ -63,7 +63,8 @@ Image 1 | Image 2
 
 
 #### t-Distributed Stochastic Neighbour Embedding (t-SNE)
-[t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) is non-deterministic algorithm to visualise high dimenional data in lower dimensions whilst retaining spatial information. See t[his excellent article](https://distill.pub/2016/misread-tsne/) on how to effectively use t-SNE. 
+[t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) is a non-deterministic algorithm to visualise high dimenional data in lower dimensions whilst retaining spatial information. See [this excellent article on how to effectively use t-SNE](https://distill.pub/2016/misread-tsne/). It's important to note that unlike PCA, t-SNE is not a generalised function that takes high dimensional data and output low dimensional equivalents. Instead, it provides a mapping for known datapoints only. 
+
 Image 1 | Image 2
 ---|---
 <img src="docs/images/tsne_1.png" width="500"> | <img src="docs/images/tnse_2.png" width="500"> 
