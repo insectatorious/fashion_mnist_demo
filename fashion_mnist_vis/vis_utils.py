@@ -146,8 +146,8 @@ def convert_image_to_greyscale(image: Image) -> Image:
   return image.convert('L')
 
 
-def scale_image_for_model(image: Image) -> Image:
-  return image.resize(size=(28, 28), resample=Image.BICUBIC)
+def scale_image_for_model(image: Image, dim: int = 28) -> Image:
+  return image.resize(size=(dim, dim), resample=Image.BICUBIC)
 
 
 def create_sprite(data: np.ndarray) -> np.ndarray:
