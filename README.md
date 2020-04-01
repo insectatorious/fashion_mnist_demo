@@ -12,7 +12,7 @@ These visualisations cover:
 - [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
 - [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
 - [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
-- [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test test for visualistion and analysis in Tensorboard Projector
+- [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test set for visualistion and analysis in Tensorboard Projector
 
 
 # Model structure
@@ -26,11 +26,13 @@ A simple, sequential Convolutional Neural Network with [Batch Normalisation](htt
 # CNN Layer Feature Map Activations
 
 ### Input Image
+A black handbag from Argos is chosen as our input - [KIPLING Black Art Mini Handbag - One Size](https://www.argos.co.uk/product/tuc135958689)
+
 ![Input Image](docs/images/visualisations/input_image.png)
 
 Model classification: `Bag` with a score of `0.9213`.
 
-Image is from an Argos product page so out of the train and test datasets. 
+Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to work on data that is from a completely domain is fundamental to proving its effectiveness.
 
 ### Transformations To Input Image
 The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
@@ -82,7 +84,7 @@ In the following examples datapoints matching the 'Sneaker' vectors are projecte
 
 ![Image1](docs/images/custom_1.png)
 
-The image below :point_down: shows an example of 'Sandal' images highlighted. Most of them are closer to the right making them similar to 'Ankle Boot' but a number of then are also seen on the left making these similar to 'Sneakers'.
+The image below :point_down: shows an example of 'Sandal' images highlighted. Most of them are closer to the right making them similar to 'Ankle Boot' but a number of them are also seen on the left making these similar to 'Sneakers'.
 
 ![Image2](docs/images/custom_2.png)
 
