@@ -49,6 +49,32 @@ CNN Layer 1 | CNN Layer 2
 ------------|-------------
 <img src="docs/images/visualisations/conv2d.png" height="500" width="500"> | <img src="docs/images/visualisations/conv2d_1.png" height="500" width="500">
 
+### Embedding vectors
+An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a low-dimensional representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. 
+
+The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64-dim vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
+
+#### Principal component analysis (PCA)
+[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple but powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64-dim` embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
+
+Image 1 | Image 2
+----|----
+<img src="docs/images/pca_1.png" width="500"> | <img src="docs/images/pca_2.png" width="500"> 
+
+
+#### t-Distributed Stochastic Neighbour Embedding (t-SNE)
+[t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) is non-deterministic algorithm to visualise high dimenional data in lower dimensions whilst retaining spatial information. See t[his excellent article](https://distill.pub/2016/misread-tsne/) on how to effectively use t-SNE. 
+Image 1 | Image 2
+---|---
+<img src="docs/images/tsne_1.png" width="500"> | <img src="docs/images/tnse_2.png" width="500"> 
+
+#### Custom projections (Tensorboard only)
+Image 1 | Image 2
+---|---
+<img src="docs/images/custom_1.png" width="500"> | <img src="docs/images/custom_2.png" width="500"> 
+
+
+
 ## Play with the vectors yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
 
