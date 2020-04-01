@@ -11,7 +11,7 @@ Details about the dataset can be found [here](https://github.com/zalandoresearch
 These visualisations cover:
 - [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
 - [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
-- [Class activation map](#transformations-to-input-image): a heatmap overlaid on the input image to see where the network is paying 'Attention'
+- [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
 - [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test test for visualistion and analysis in Tensorboard Projector
 
 
@@ -25,37 +25,40 @@ A simple, sequential Convolutional Neural Network with [Batch Normalisation](htt
 
 # CNN Layer Feature Map Activations
 
-### Input image
+### Input Image
 ![Input Image](docs/images/visualisations/input_image.png)
 
 Model classification: `Bag` with a score of `0.9213`.
 
 Image is from an Argos product page so out of the train and test datasets. 
 
-### Transformations to input image
-The model only accepts greyscale images with a resolution of `28x28` so all input images will need to be 
+### Transformations To Input Image
+The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
 - converted to greyscale
-- resized to `28x28`
+- resized to `28 x 28`
+
 before they can be sent to the model.
+
+### Class Activation Map
 
 Input To Model | Class Activation Map 
 ---------------|---------------------
 <img src="docs/images/visualisations/rescaled_model_input.png" width="100"> | <img src="docs/images/visualisations/cam.png" width="100"> 
 
 Looking at the activation map it appears the model is paying attention to the handle of the bag in making it's classification (along with the absence of anything above the handle).
-### Layer activations
+### Layer Activations
 
 CNN Layer 1 | CNN Layer 2
 ------------|-------------
 <img src="docs/images/visualisations/conv2d.png" height="500" width="500"> | <img src="docs/images/visualisations/conv2d_1.png" height="500" width="500">
 
-### Embedding vectors
+### Embedding Vectors
 An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a low-dimensional representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. 
 
-The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64-dim vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
+The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64 dimension vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
 
-#### Principal component analysis (PCA)
-[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64-dim` embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
+#### Principal Component Analysis (PCA)
+[PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64` dimension embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
 
 Image 1 | Image 2
 ----|----
@@ -69,14 +72,19 @@ Image 1 | Image 2
 ---|---
 <img src="docs/images/tsne_1.png" width="500"> | <img src="docs/images/tnse_2.png" width="500"> 
 
-#### Custom projections (Tensorboard only)
+#### Custom Projections (Tensorboard Only)
+Tensorboard allows users to map projections for datapoints matching certain criteria against each other. 
+In the following examples datapoints matching the 'Sneaker' vectors are projected to the left and those matching 'Ankle' are projected to the right. This can be interpreted as, the more to the left or right a data point is, the more similar it is to a 'Sneaker' or 'Ankle' datapoint. Similarly, 'Bag' and 'Coat' are projected up and down respectively. 
+
+Image 2 shows an example of 'Sandal' images. Most of them are closer to the right making them similar to 'Ankle Boot' but a number of then are also seen on the left making these similar to 'Sneakers'.
+
 Image 1 | Image 2
 ---|---
 <img src="docs/images/custom_1.png" width="500"> | <img src="docs/images/custom_2.png" width="500"> 
 
 
 
-## Play with the vectors yourself!
+## Play With The Vectors Yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
 
 # Licence
