@@ -6,6 +6,21 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 ![tsne_gif](docs/images/tsne.gif)
 👉 [**Live demo**](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json) of embedding vectors on Tensorboard.
 
+# Table Of Contents
+
+- [Model Structure](#model-structure)
+- [Network Layer Visualisations](#network-layer-visualisations)
+  - [Transformations To Input Image](#transformations-to-input-image)
+  - [Class Activation Map](#class-activation-map)
+  - [Layer Activations](#layer-activations)
+  - [Global Average Pooling & Dense Activations](#global-average-pooling--dense-activations)
+- [Embedding Vectors](#embedding-vectors)
+  - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+  - [t-Distributed Stochastic Neighbour Embedding (t-SNE)](#t-distributed-stochastic-neighbour-embedding-t-sne)
+  - [Custom Projections](#custom-projections-tensorboard-only)
+- [Live Demo](#play-with-the-vectors-yourself)
+- [Licence](#licence)
+
 Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28x28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. 
 
 These visualisations cover:
@@ -21,9 +36,7 @@ Summary | Graph Diagram
 ----|----
 A simple, sequential Convolutional Neural Network with [Batch Normalisation](https://en.wikipedia.org/wiki/Batch_normalization), a [Global Average Pooling](https://alexisbcook.github.io/2017/global-average-pooling-layers-for-object-localization/) layer (for [Attention](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)) and [Dropout](https://en.wikipedia.org/wiki/Convolutional_neural_network#Dropout). Note there are no fully connected layers in this network. This model achieved an accuracy of 92.07% on the test set. It is expected that a model with skip connections as popularised by the [ResNet-50](https://arxiv.org/abs/1512.03385) architecture would improve the classification capabilities. However the visualisation of such a network with merge layers would be more difficult and harder to grok for people starting out. | <img src="docs/images/model.png" width="500">
 
-
-
-# CNN Layer Feature Map Activations
+# Network Layer Visualisations
 
 ### Input Image
 A black handbag from Argos is chosen as our input - [KIPLING Black Art Mini Handbag - One Size](https://www.argos.co.uk/product/tuc135958689)
