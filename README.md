@@ -8,6 +8,7 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 
 # Table Of Contents
 
+- [Summary](#summary)
 - [Model Structure](#model-structure)
 - [Network Layer Visualisations](#network-layer-visualisations)
   - [Transformations To Input Image](#transformations-to-input-image)
@@ -20,6 +21,8 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
   - [Custom Projections](#custom-projections-tensorboard-only)
 - [Live Demo](#play-with-the-vectors-yourself)
 - [Licence](#licence)
+
+# Summary
 
 Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28x28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. 
 
@@ -121,6 +124,16 @@ The image below :point_down: shows an example of 'Sandal' images highlighted. Mo
 
 # Play With The Vectors Yourself!
 View the embedded vectors on [Tensorboard](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json). Works best in Chrome or Firefox. 
+
+The vectors visualised here are exported using the model `model.h5`, saved in this repository. 
+
+# Further Reading
+
+- [Good Overview of Convolutional Neural Networks](https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2)
+- [Conv Nets: A Modular Perspective](https://colah.github.io/posts/2014-07-Conv-Nets-Modular/)
+- [Understanding Convolutions](https://colah.github.io/posts/2014-07-Understanding-Convolutions/)
+- [Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)
+- [Transfer Learning With A Pretrained ConvNet](https://www.tensorflow.org/tutorials/images/transfer_learning)
 
 # Licence
 GNU General Public License v3.0
