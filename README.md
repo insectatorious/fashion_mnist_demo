@@ -20,11 +20,21 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
   - [t-Distributed Stochastic Neighbour Embedding (t-SNE)](#t-distributed-stochastic-neighbour-embedding-t-sne)
   - [Custom Projections](#custom-projections-tensorboard-only)
 - [Live Demo](#play-with-the-vectors-yourself)
+- [Further Reading](#further-reading)
 - [Licence](#licence)
 
 # Summary
 
-Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28x28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. 
+- A Convolutional Neural Network is trained (see [train.py](./fashion_mnist_vis/train.py)) to classify images from the Fashion MNIST dataset. 
+  - Model checkpoints save on validation loss improvements
+  - Early Stopping prevents runaway training. 
+  - Dropout to limit overfitting
+  - Global Average Pooling to simplify feature extraction along with spatial invariance
+  - Tensorboard logging of Images, Histograms and Distributions along with Scalars like `accuracy` & `loss`
+- Classification of a new image (passed in using a command line argument or one of the sample images located in [sample_images](./sample_images)) using a trained model (:point_up:) using [classify.py](./fashion_mnist_vis/classify.py).
+- Exporting test images from dataset for visualisation in Tensorboard Projector
+
+Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28x28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. After training several visualisations are generated to see the model's learning. 
 
 These visualisations cover:
 - [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
