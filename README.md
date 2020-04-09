@@ -9,6 +9,11 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 # Table Of Contents
 
 - [Summary](#summary)
+- [Usage](#usage)
+  - [Requirements](#requirements)
+  - [Training](#training)
+  - [Classifying New Images](#classifying-new-images)
+  - [Exporting Tensorboard Assets](#exporting-tensorboard-assets)
 - [Model Structure](#model-structure)
 - [Network Layer Visualisations](#network-layer-visualisations)
   - [Transformations To Input Image](#transformations-to-input-image)
@@ -41,6 +46,43 @@ These visualisations cover:
 - [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
 - [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
 - [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test set for visualistion and analysis in Tensorboard Projector
+
+# Usage
+
+## Requirements
+
+A full list of requirements can be found in [`requirements.txt`](./requirements.txt). Additionally `graphviz` is required for plotting the model's structure (this is an OS level install). The main dependencies of note are:
+- TensorFlow 2.x
+- pillow (used for image loading, greyscale conversions and resizing)
+- opencv (used for running model against webcam feed - highly experimental)
+- pydot & graphviz (used for plotting model structure)
+
+All dependecies can be installed by running (note `graphviz` needs to be installed on the system):
+```bash
+# execute from project root folder
+pip install -r requirements.txt
+```
+
+## Training
+
+Simply run (from the project root path):
+
+```bash
+PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/train.py
+```
+The trained model will be saved in the project root with the filename `model.h5`. 
+
+## Classifying New Images
+
+To classify one of the sample images:
+
+```bash
+PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/classify.py sample_images/black_bag.jpg --saved_model model.h5 --save_plots
+```
+
+Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted as needed. All visualisations will be stored  in the `visualisations` folder. To avoid plotting each time and only classify the image, remove the `--save_plots` argument form the command.
+
+## Exporting Tensorboard Assets
 
 
 # Model structure
