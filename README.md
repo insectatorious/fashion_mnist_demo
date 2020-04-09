@@ -49,9 +49,13 @@ These visualisations cover:
 
 # Usage
 
+A Python virtual environment (see [this guide](https://docs.python-guide.org/dev/virtualenvs/) for more information) is recommended when installing Python libraries. This prevents system-wide installs and allows each environment to function as a sandbox. 
+
 ## Requirements
 
 A full list of requirements can be found in [`requirements.txt`](./requirements.txt). Additionally `graphviz` is required for plotting the model's structure (this is an OS level install). The main dependencies of note are:
+
+- Python 3
 - TensorFlow 2.x
 - pillow (used for image loading, greyscale conversions and resizing)
 - opencv (used for running model against webcam feed - highly experimental)
@@ -84,6 +88,25 @@ Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted
 
 ## Exporting Tensorboard Assets
 
+Embedding vectors ([see below](#embedding-vectors) for more details) are exported for visualising in Tensorboard Projector. 
+
+**First** export assets using:
+
+```bash
+PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/tensorboard_visualise.py --saved_model model.h5
+```
+
+This will store necessary files in the [`tensorboard_assets`](./tensorboard_assets) folder. 
+
+**Second**, start a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) server using the provded [`tensorboard_assets/serve_assets.py`](./tensorboard_assets/serve_assets) script:
+
+```bash
+cd tensorboard_assets
+python serve_assets.py
+```
+This will start a simple webserver to serve the exported embedding vector data (with CORS enabled) on port `8000`.
+
+**Finally**, go to http://projector.tensorflow.org/?config=http://localhost:8000/config.json in a browser to view the embedded vectors in Tensorboard Projector. 
 
 # Model structure
 
