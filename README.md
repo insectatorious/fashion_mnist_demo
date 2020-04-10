@@ -66,7 +66,7 @@ All dependecies can be installed by running the following on the command line:
 # execute from project root folder
 pip install -r requirements.txt
 ```
-Note: `graphviz` needs to be installed on the system
+Note: [`graphviz`](https://www.graphviz.org/) needs to be installed on the system
 
 ## Training
 
@@ -85,7 +85,7 @@ To classify one of the sample images:
 PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/classify.py sample_images/black_bag.jpg --saved_model model.h5 --save_plots
 ```
 
-Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted as needed. All visualisations will be stored  in the `visualisations` folder. To avoid plotting each time and only classify the image, remove the `--save_plots` argument form the command.
+Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted as needed. All visualisations will be stored  in the `visualisations` folder. To avoid plotting each time and only classify the image, remove the `--save_plots` argument from the command.
 
 ## Exporting Tensorboard Assets
 
@@ -99,7 +99,7 @@ PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/tensorboard_visualise.py -
 
 This will store necessary files in the [`tensorboard_assets`](./tensorboard_assets) folder. 
 
-**Second**, start a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) server using the provded [`tensorboard_assets/serve_assets.py`](./tensorboard_assets/serve_assets) script:
+**Second**, start a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) server using the provided [`tensorboard_assets/serve_assets.py`](./tensorboard_assets/serve_assets) script:
 
 ```bash
 cd tensorboard_assets
