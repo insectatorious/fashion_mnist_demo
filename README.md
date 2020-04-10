@@ -39,7 +39,7 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 - Classification of a new image (passed in using a command line argument or one of the sample images located in [sample_images](./sample_images)) using a trained model (:point_up:) using [classify.py](./fashion_mnist_vis/classify.py).
 - Exporting test images from dataset for visualisation in Tensorboard Projector
 
-Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28x28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. After training several visualisations are generated to see the model's learning. 
+Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28 x 28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. After training several visualisations are generated to see the model's learning. 
 
 These visualisations cover:
 - [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
@@ -85,7 +85,9 @@ To classify one of the sample images:
 PYTHONPATH=fashion_mnist_vis python fashion_mnist_vis/classify.py sample_images/black_bag.jpg --saved_model model.h5 --save_plots
 ```
 
-Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted as needed. All visualisations will be stored  in the `visualisations` folder. To avoid plotting each time and only classify the image, remove the `--save_plots` argument from the command.
+Here the saved model (`model.h5`) and image (`black_bag.jpg`) can be substituted as needed. All visualisations will be stored  in the `visualisations` folder. To avoid plotting each time and only classify the image, remove the `--save_plots` argument from the command. As the model expects a `28 x 28` image, the input image will be resized to `28 x 28`.
+
+Note: Input images in the training set are square with the object centered. For best results, new images should be similar. 
 
 ## Exporting Tensorboard Assets
 
@@ -124,7 +126,7 @@ A black handbag from Argos is chosen as our input - [KIPLING Black Art Mini Hand
 
 Model classification: `Bag` with a score of `0.9213`.
 
-Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to correctly classif data that is from a different source (but still in line with the training dataset's patterns) is fundamental to proving its effectiveness.
+Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to correctly classify data that is from a different source (but still in line with the training dataset's patterns) is fundamental to proving its effectiveness.
 
 ### Transformations To Input Image
 The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
