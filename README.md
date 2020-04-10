@@ -30,12 +30,12 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 
 # Summary
 
-- A Convolutional Neural Network is trained (see [train.py](./fashion_mnist_vis/train.py)) to classify images from the Fashion MNIST dataset. 
-  - Model checkpoints save on validation loss improvements
-  - Early Stopping prevents runaway training. 
-  - Dropout to limit overfitting
-  - Global Average Pooling to simplify feature extraction along with spatial invariance
-  - Tensorboard logging of Images, Histograms and Distributions along with Scalars like `accuracy` & `loss`
+- A Convolutional Neural Network is trained (see [train.py](./fashion_mnist_vis/train.py)) to classify images from the Fashion MNIST dataset. The main features showcased here: 
+  - [ModelCheckpoint callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint?hl=en) saves only  when validation loss (`val_loss`) improves
+  - [EarlyStopping callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping) stops training when validation loss (`val_loss`) stops improving 
+  - [Dropout](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout?hl=en) to limit overfitting
+  - [GlobalAveragePooling](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GlobalAveragePooling2D?hl=en) to simplify feature extraction along with spatial invariance
+  - [Tensorboard](https://www.tensorflow.org/tensorboard?hl=en) logging of Images, Histograms and Distributions along with Scalars like `accuracy` & `loss`
 - Classification of a new image (passed in using a command line argument or one of the sample images located in [sample_images](./sample_images)) using a trained model (:point_up:) using [classify.py](./fashion_mnist_vis/classify.py).
 - Exporting test images from dataset for visualisation in Tensorboard Projector
 
@@ -61,11 +61,12 @@ A full list of requirements can be found in [`requirements.txt`](./requirements.
 - opencv (used for running model against webcam feed - highly experimental)
 - pydot & graphviz (used for plotting model structure)
 
-All dependecies can be installed by running (note `graphviz` needs to be installed on the system):
+All dependecies can be installed by running the following on the command line:
 ```bash
 # execute from project root folder
 pip install -r requirements.txt
 ```
+Note: `graphviz` needs to be installed on the system
 
 ## Training
 
