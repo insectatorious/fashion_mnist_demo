@@ -21,11 +21,10 @@ def main(FLAGS):
   all_weights = model.layers[-1].get_weights()[0]
   cap = cv2.VideoCapture(0)
   alpha = 0.4
-  color_mode = cv2.IMREAD_COLOR
   flag = True
   while (True):
     # Capture frame-by-frame
-    ret, frame = cap.read()
+    _, frame = cap.read()
 
     # Our operations on the frame come here
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # COLOR_BGR2GRAY, COLOR_BGR2RGB
@@ -61,11 +60,11 @@ def main(FLAGS):
     elif k == -1:  # normally -1 returned,so don't print it
       continue
     elif k == 49:  # 1
-      color_mode = cv2.IMREAD_COLOR
+      pass
     elif k == 50:  # 2
-      color_mode = cv2.COLOR_BGR2GRAY
+      pass
     elif k == 51:  # 3
-      color_mode = cv2.COLOR_BGR2RGB
+      pass
     else:
       print(k)  # Dont know what to do so print it
 

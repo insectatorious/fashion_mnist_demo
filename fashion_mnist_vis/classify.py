@@ -51,7 +51,7 @@ def main(FLAGS) -> None:
     for i, layer_name in layer_names_with_index:
       save_feature_map(fig=visualise_feature_maps(feature_maps[i],
                                                   layer_name),
-                       dir=FLAGS.plot_dir,
+                       output_dir=FLAGS.plot_dir,
                        fname=f"{layer_name}.png")
 
     # fig = visualise_feature_maps(feature_maps[1], layer_names_with_index[1][1])
@@ -71,7 +71,7 @@ def main(FLAGS) -> None:
                     all_amp_layer_weights=model.layers[-1].get_weights()[0],
                     filters=model.layers[cam_layer_with_index[0]].output.shape[-1])
       fig = plot_cam(model_input, cam)
-      save_feature_map(fig, dir=FLAGS.plot_dir, fname=f"cam.png")
+      save_feature_map(fig, output_dir=FLAGS.plot_dir, fname=f"cam.png")
 
     FLAGS.test_image.save(os.path.join(FLAGS.plot_dir, "input_image.png"))
     greyscale_image.save(os.path.join(FLAGS.plot_dir, "greyscale_input.png"))

@@ -4,18 +4,15 @@ import os
 import logging
 import argparse
 import itertools
-from typing import Tuple
 
 import cv2
 import numpy as np
-import scipy.ndimage
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from PIL import Image
 from matplotlib.colors import Colormap
 from scipy.ndimage import zoom
 from mpl_toolkits.axes_grid1 import ImageGrid
-from sklearn.metrics import confusion_matrix
 
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
@@ -69,8 +66,8 @@ def get_cam(image_size, conv_out, pred_vec, all_amp_layer_weights, filters):
 
 def process_image(ax, img, all_amp_layer_weights, conv_out_model, class_names, filters):
   conv_out, pred_vec = conv_out_model.predict(img[np.newaxis, ...])
-  # Need To Add IMAGE_SIZE below
-  cam = get_cam(conv_out, pred_vec, all_amp_layer_weights, filters)
+  # 'img' 1st dimension (shape[0]) is assumed to be batch size ☝
+  cam = get_cam(img.shape[1], conv_out, pred_vec, all_amp_layer_weights, filters)
 
   ax.imshow(np.squeeze(img), cmap=plt.cm.binary)
   ax.imshow(cam, cmap=plt.cm.jet, alpha=0.5)
@@ -120,8 +117,8 @@ def valid_keras_model(value: str) -> tf.keras.Model:
   return tf.keras.models.load_model(value)
 
 
-def save_feature_map(fig: plt.Figure, dir: str, fname: str) -> None:
-  fig.savefig(fname=os.path.join(dir, fname))
+def save_feature_map(fig: plt.Figure, output_dir: str, fname: str) -> None:
+  fig.savefig(fname=os.path.join(output_dir, fname))
 
 
 def plot_cam(img: np.ndarray,
@@ -138,7 +135,9 @@ def plot_cam(img: np.ndarray,
 
 
 def convert_image_to_greyscale(image: Image) -> Image:
-  """See https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#PIL.Image.Image.convert
+  """Converts an image to greyscale.
+
+  See https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#PIL.Image.Image.convert
 
   :param image: PIL.Image
   :return: PIL.Image (greyscale)
@@ -151,8 +150,7 @@ def scale_image_for_model(image: Image, dim: int = 28) -> Image:
 
 
 def create_sprite(data: np.ndarray) -> np.ndarray:
-  """
-  Tile images into sprite image.
+  """Tile images into sprite image.
   Add any necessary padding
   """
 
