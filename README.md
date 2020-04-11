@@ -1,7 +1,9 @@
 # Fashion MNIST Image Classification & Visualisation
 [![Python 3.6](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-374/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
-![Code Quality](https://img.shields.io/codacy/grade/8f04919d7a034e19a82f4e7f8b5469bc) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cbf9e6b7e83c47dd9429c3c8021a86f6)](https://app.codacy.com/manual/insectatorious/fashion_mnist_demo?utm_source=github.com&utm_medium=referral&utm_content=insectatorious/fashion_mnist_demo&utm_campaign=Badge_Grade_Dashboard)
+
+
 
 This repository contains sample code to train and visualise a simple [Convolutional Neural Network](https://en.wikipedia.org/wiki/Convolutional_neural_network) to classify the [Fashion MNIST dataset](https://github.com/zalandoresearch/fashion-mnist) using [TensorFlow 2.x](https://www.tensorflow.org).
 Whilst the network architecture is a simple [Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) model ([details below](#model-structure)), the goal is to highlight the ability to visualise the model as it classifies input images. 
