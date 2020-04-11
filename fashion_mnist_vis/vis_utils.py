@@ -120,8 +120,8 @@ def valid_keras_model(value: str) -> tf.keras.Model:
   return tf.keras.models.load_model(value)
 
 
-def save_feature_map(fig: plt.Figure, dir: str, fname: str) -> None:
-  fig.savefig(fname=os.path.join(dir, fname))
+def save_feature_map(fig: plt.Figure, output_dir: str, fname: str) -> None:
+  fig.savefig(fname=os.path.join(output_dir, fname))
 
 
 def plot_cam(img: np.ndarray,

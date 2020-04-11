@@ -51,7 +51,7 @@ def main(FLAGS) -> None:
     for i, layer_name in layer_names_with_index:
       save_feature_map(fig=visualise_feature_maps(feature_maps[i],
                                                   layer_name),
-                       dir=FLAGS.plot_dir,
+                       output_dir=FLAGS.plot_dir,
                        fname=f"{layer_name}.png")
 
     # fig = visualise_feature_maps(feature_maps[1], layer_names_with_index[1][1])
