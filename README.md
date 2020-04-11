@@ -61,7 +61,7 @@ A Python virtual environment (see [this guide](https://docs.python-guide.org/dev
 
 A full list of requirements can be found in [`requirements.txt`](./requirements.txt). Additionally `graphviz` is required for plotting the model's structure (this is an OS level install). The main dependencies of note are:
 
--   Python 3
+-   Python 3.7
 -   TensorFlow 2.x
 -   pillow (used for image loading, greyscale conversions and resizing)
 -   opencv (used for running model against webcam feed - highly experimental)
