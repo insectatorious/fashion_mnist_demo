@@ -150,8 +150,7 @@ def scale_image_for_model(image: Image, dim: int = 28) -> Image:
 
 
 def create_sprite(data: np.ndarray) -> np.ndarray:
-  """
-  Tile images into sprite image.
+  """Tile images into sprite image.
   Add any necessary padding
   """
 
