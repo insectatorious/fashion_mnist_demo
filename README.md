@@ -64,7 +64,6 @@ A full list of requirements can be found in [`requirements.txt`](./requirements.
 -   Python 3
 -   TensorFlow 2.x
 -   pillow (used for image loading, greyscale conversions and resizing)
--   opencv (used for running model against webcam feed - highly experimental)
 -   pydot & graphviz (used for plotting model structure)
 
 All dependecies can be installed by running the following on the command line:
