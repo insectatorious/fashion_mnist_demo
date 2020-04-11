@@ -8,44 +8,44 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 
 # Table Of Contents
 
-- [Summary](#summary)
-- [Usage](#usage)
-  - [Requirements](#requirements)
-  - [Training](#training)
-  - [Classifying New Images](#classifying-new-images)
-  - [Exporting Tensorboard Assets](#exporting-tensorboard-assets)
-- [Model Structure](#model-structure)
-- [Network Layer Visualisations](#network-layer-visualisations)
-  - [Transformations To Input Image](#transformations-to-input-image)
-  - [Class Activation Map](#class-activation-map)
-  - [Layer Activations](#layer-activations)
-  - [Global Average Pooling & Dense Activations](#global-average-pooling--dense-activations)
-- [Embedding Vectors](#embedding-vectors)
-  - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
-  - [t-Distributed Stochastic Neighbour Embedding (t-SNE)](#t-distributed-stochastic-neighbour-embedding-t-sne)
-  - [Custom Projections](#custom-projections-tensorboard-only)
-- [Live Demo](#play-with-the-vectors-yourself)
-- [Further Reading](#further-reading)
-- [Licence](#licence)
+-  [Summary](#summary)
+-  [Usage](#usage)
+  -  [Requirements](#requirements)
+  -  [Training](#training)
+  -  [Classifying New Images](#classifying-new-images)
+  -  [Exporting Tensorboard Assets](#exporting-tensorboard-assets)
+-  [Model Structure](#model-structure)
+-  [Network Layer Visualisations](#network-layer-visualisations)
+  -  [Transformations To Input Image](#transformations-to-input-image)
+  -  [Class Activation Map](#class-activation-map)
+  -  [Layer Activations](#layer-activations)
+  -  [Global Average Pooling & Dense Activations](#global-average-pooling--dense-activations)
+-  [Embedding Vectors](#embedding-vectors)
+  -  [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+  -  [t-Distributed Stochastic Neighbour Embedding (t-SNE)](#t-distributed-stochastic-neighbour-embedding-t-sne)
+  -  [Custom Projections](#custom-projections-tensorboard-only)
+-  [Live Demo](#play-with-the-vectors-yourself)
+-  [Further Reading](#further-reading)
+-  [Licence](#licence)
 
 # Summary
 
-- A Convolutional Neural Network is trained (see [train.py](./fashion_mnist_vis/train.py)) to classify images from the Fashion MNIST dataset. The main features showcased here: 
-  - [ModelCheckpoint callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint?hl=en) saves only  when validation loss (`val_loss`) improves
-  - [EarlyStopping callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping) stops training when validation loss (`val_loss`) stops improving 
-  - [Dropout](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout?hl=en) to limit overfitting
-  - [GlobalAveragePooling](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GlobalAveragePooling2D?hl=en) to simplify feature extraction along with spatial invariance
-  - [Tensorboard](https://www.tensorflow.org/tensorboard?hl=en) logging of Images, Histograms and Distributions along with Scalars like `accuracy` & `loss`
-- Classification of a new image (passed in using a command line argument or one of the sample images located in [sample_images](./sample_images)) using a trained model (:point_up:) using [classify.py](./fashion_mnist_vis/classify.py).
-- Exporting test images from dataset for visualisation in Tensorboard Projector
+-  A Convolutional Neural Network is trained (see [train.py](./fashion_mnist_vis/train.py)) to classify images from the Fashion MNIST dataset. The main features showcased here: 
+  -  [ModelCheckpoint callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint?hl=en) saves only  when validation loss (`val_loss`) improves
+  -  [EarlyStopping callback](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping) stops training when validation loss (`val_loss`) stops improving 
+  -  [Dropout](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout?hl=en) to limit overfitting
+  -  [GlobalAveragePooling](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GlobalAveragePooling2D?hl=en) to simplify feature extraction along with spatial invariance
+  -  [Tensorboard](https://www.tensorflow.org/tensorboard?hl=en) logging of Images, Histograms and Distributions along with Scalars like `accuracy` & `loss`
+-  Classification of a new image (passed in using a command line argument or one of the sample images located in [sample_images](./sample_images)) using a trained model (:point_up:) using [classify.py](./fashion_mnist_vis/classify.py).
+-  Exporting test images from dataset for visualisation in Tensorboard Projector
 
 Details about the dataset can be found [here](https://github.com/zalandoresearch/fashion-mnist). Briefly, each image is `28 x 28` pixels and is one of ten different types of fashion categories (Shirt, Dress, Sneakers etc). The classification task is to train a model that can take one of these images as input and classify it into one of the existing categories. After training several visualisations are generated to see the model's learning. 
 
 These visualisations cover:
-- [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
-- [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
-- [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
-- [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test set for visualistion and analysis in Tensorboard Projector
+-  [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
+-  [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
+-  [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
+-  [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test set for visualistion and analysis in Tensorboard Projector
 
 # Usage
 
@@ -55,11 +55,11 @@ A Python virtual environment (see [this guide](https://docs.python-guide.org/dev
 
 A full list of requirements can be found in [`requirements.txt`](./requirements.txt). Additionally `graphviz` is required for plotting the model's structure (this is an OS level install). The main dependencies of note are:
 
-- Python 3
-- TensorFlow 2.x
-- pillow (used for image loading, greyscale conversions and resizing)
-- opencv (used for running model against webcam feed - highly experimental)
-- pydot & graphviz (used for plotting model structure)
+-  Python 3
+-  TensorFlow 2.x
+-  pillow (used for image loading, greyscale conversions and resizing)
+-  opencv (used for running model against webcam feed - highly experimental)
+-  pydot & graphviz (used for plotting model structure)
 
 All dependecies can be installed by running the following on the command line:
 ```bash
@@ -130,8 +130,8 @@ Image is from an Argos product page so out of the train and test datasets. This 
 
 ### Transformations To Input Image
 The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
-- converted to greyscale
-- resized to `28 x 28`
+-  converted to greyscale
+-  resized to `28 x 28`
 
 before they can be sent to the model.
 
@@ -207,11 +207,11 @@ The vectors visualised here are exported using the model `model.h5`, saved in th
 
 # Further Reading
 
-- [Applied Deep Learning - Part 4: Convolutional Neural Networks](https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2) - _Towards Data Science_ 
-- [Conv Nets: A Modular Perspective](https://colah.github.io/posts/2014-07-Conv-Nets-Modular/) - _Chris Olah's Blog_ 
-- [Understanding Convolutions](https://colah.github.io/posts/2014-07-Understanding-Convolutions/) - _Chris Olah's Blog_ 
-- [Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) - _Chris Olah's Blog_
-- [Transfer Learning With A Pretrained ConvNet](https://www.tensorflow.org/tutorials/images/transfer_learning) - _Tensorflow  Official Guide_
+-  [Applied Deep Learning - Part 4: Convolutional Neural Networks](https://towardsdatascience.com/applied-deep-learning-part-4-convolutional-neural-networks-584bc134c1e2) - _Towards Data Science_ 
+-  [Conv Nets: A Modular Perspective](https://colah.github.io/posts/2014-07-Conv-Nets-Modular/) - _Chris Olah's Blog_ 
+-  [Understanding Convolutions](https://colah.github.io/posts/2014-07-Understanding-Convolutions/) - _Chris Olah's Blog_ 
+-  [Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) - _Chris Olah's Blog_
+-  [Transfer Learning With A Pretrained ConvNet](https://www.tensorflow.org/tutorials/images/transfer_learning) - _Tensorflow  Official Guide_
 
 # Licence
 GNU General Public License v3.0
