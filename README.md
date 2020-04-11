@@ -109,7 +109,7 @@ python serve_assets.py
 ```
 This will start a simple webserver to serve the exported embedding vector data (with CORS enabled) on port `8000`.
 
-**Finally**, go to http://projector.tensorflow.org/?config=http://localhost:8000/config.json in a browser to view the embedded vectors in Tensorboard Projector. 
+**Finally**, go to <http://projector.tensorflow.org/?config=http://localhost:8000/config.json> in a browser to view the embedded vectors in Tensorboard Projector. 
 
 ## Model structure
 
