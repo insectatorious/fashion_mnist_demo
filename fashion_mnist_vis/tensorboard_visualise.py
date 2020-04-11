@@ -30,7 +30,7 @@ def main(FLAGS):
                                              model.layers[-1].output])
   fashion_mnist = tf.keras.datasets.fashion_mnist
 
-  (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+  _, _, (test_images, test_labels) = fashion_mnist.load_data()
 
   create_master_sprite(test_images[:num_to_export], dir_path)
 
