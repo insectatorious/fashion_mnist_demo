@@ -4,7 +4,5 @@ pandas
 matplotlib
 scikit-learn
 pydot
-opencv-python
-opencv-python-headless  # mac only?
 pillow
 tensorflow-cpu==2.1
