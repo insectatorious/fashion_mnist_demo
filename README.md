@@ -31,6 +31,7 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
     -   [Custom Projections](#custom-projections-tensorboard-only)
 -   [Live Demo](#play-with-the-vectors-yourself)
 -   [Further Reading](#further-reading)
+-   [Experimental](#experimental)
 -   [Licence](#licence)
 
 ## Summary
@@ -217,6 +218,12 @@ The vectors visualised here are exported using the model `model.h5`, saved in th
 -   [Understanding Convolutions](https://colah.github.io/posts/2014-07-Understanding-Convolutions/) - _Chris Olah's Blog_ 
 -   [Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) - _Chris Olah's Blog_
 -   [Transfer Learning With A Pretrained ConvNet](https://www.tensorflow.org/tutorials/images/transfer_learning) - _Tensorflow  Official Guide_
+
+## Experimental
+
+Code with interesting results is located in the [./fashion_mnist_vis/experimental](./fashion_mnist_vis/experimental) folder. 
+For instance using the webcam to classify a livestream using the trained Fashion MNIST model.
+See the [Experimental README](./fashion_mnist_vis/experimental/README.md) for more information. 
 
 ## Licence
 GNU General Public License v3.0
