@@ -143,8 +143,8 @@ before they can be sent to the model.
 
 #### Class Activation Map
 
-Input To Model | Class Activation Map 
----------------|---------------------
+| Input To Model | Class Activation Map | 
+| -------------- | -------------------- |
 <img src="docs/images/visualisations/rescaled_model_input.png" width="100"> | <img src="docs/images/visualisations/cam.png" width="100"> 
 
 Looking at the activation map :thinking:, it appears the model is paying attention to the *handle of the bag* in making it's classification (along with the absence of anything above the handle).
@@ -225,5 +225,6 @@ Code with interesting results is located in the [./fashion_mnist_vis/experimenta
 For instance using the webcam to classify a livestream using the trained Fashion MNIST model.
 See the [Experimental README](./fashion_mnist_vis/experimental/README.md) for more information. 
 
+![Webcam Boot Classification](./docs/images/webcam_boot.png)
 ## Licence
 GNU General Public License v3.0
