@@ -66,8 +66,8 @@ def get_cam(image_size, conv_out, pred_vec, all_amp_layer_weights, filters):
 
 def process_image(ax, img, all_amp_layer_weights, conv_out_model, class_names, filters):
   conv_out, pred_vec = conv_out_model.predict(img[np.newaxis, ...])
-  # Need To Add IMAGE_SIZE below
-  cam = get_cam(conv_out, pred_vec, all_amp_layer_weights, filters)
+  # 'img' 1st dimension (shape[0]) is assumed to be batch size ☝
+  cam = get_cam(img.shape[1], conv_out, pred_vec, all_amp_layer_weights, filters)
 
   ax.imshow(np.squeeze(img), cmap=plt.cm.binary)
   ax.imshow(cam, cmap=plt.cm.jet, alpha=0.5)
