@@ -4,18 +4,15 @@ import os
 import logging
 import argparse
 import itertools
-from typing import Tuple
 
 import cv2
 import numpy as np
-import scipy.ndimage
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from PIL import Image
 from matplotlib.colors import Colormap
 from scipy.ndimage import zoom
 from mpl_toolkits.axes_grid1 import ImageGrid
-from sklearn.metrics import confusion_matrix
 
 
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
