@@ -5,7 +5,6 @@ import logging
 import argparse
 import itertools
 
-import cv2
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -174,4 +173,5 @@ def create_sprite(data: np.ndarray) -> np.ndarray:
 
 def create_master_sprite(images: np.ndarray, output_dir: str) -> None:
   sprite = create_sprite(images)
-  cv2.imwrite(os.path.join(output_dir, "master.jpg"), sprite)
+  sprite = Image.fromarray(sprite)
+  sprite.save(os.path.join(output_dir, "master.jpg"))
