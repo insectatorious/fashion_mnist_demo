@@ -96,7 +96,7 @@ Note: Input images in the training set are square with the object centered. For 
 
 ### Exporting Tensorboard Assets
 
-Embedding vectors ([see below](#embedding-vectors) for more details) are exported for visualising in Tensorboard Projector. 
+Embedding vectors ([see below for more details](#embedding-vectors)) are exported for visualising in Tensorboard Projector. 
 
 **First** export assets using:
 
