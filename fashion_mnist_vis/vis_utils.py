@@ -19,8 +19,7 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 
 
 def plot_confusion_matrix(cm, class_names):
-  """
-  Returns a matplotlib figure containing the plotted confusion matrix.
+  """Returns a matplotlib figure containing the plotted confusion matrix.
 
   Args:
     cm (array, shape = [n, n]): a confusion matrix of integer classes
@@ -149,9 +148,6 @@ def scale_image_for_model(image: Image, dim: int = 28) -> Image:
 
 
 def create_sprite(data: np.ndarray) -> np.ndarray:
-  """Tile images into sprite image.
-  Add any necessary padding
-  """
 
   # For B&W or greyscale images
   if len(data.shape) == 3:
