@@ -133,12 +133,15 @@ def plot_cam(img: np.ndarray,
 
 
 def convert_image_to_greyscale(image: Image) -> Image:
-  """Converts an image to greyscale.
+  """Converts an Image to greyscale.
 
   See https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#PIL.Image.Image.convert
 
-  :param image: PIL.Image
-  :return: PIL.Image (greyscale)
+  Args:
+    image: PIL.Image
+
+  Returns: PIL.Image
+
   """
   return image.convert('L')
 
