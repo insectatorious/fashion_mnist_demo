@@ -7,3 +7,4 @@ __pycache__/
 *$py.class
 .DS_Store
 raw_tensors.tsv
+.pytest_cache
