@@ -8,3 +8,4 @@ pytest
 pillow
 tensorflow-cpu~=2.1.0
 coverage
+coveralls
