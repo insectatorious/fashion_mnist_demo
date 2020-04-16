@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
+import argparse
 import os
 from tempfile import TemporaryDirectory
 
 import numpy as np
+import pytest
 from PIL import Image
 
-from vis_utils import scale_image_for_model
+from vis_utils import scale_image_for_model, valid_keras_model
 from vis_utils import convert_image_to_greyscale
 from vis_utils import create_sprite
 from vis_utils import create_master_sprite
@@ -62,8 +63,20 @@ def test_create_master_sprite():
   with TemporaryDirectory() as tmpdir:
     create_master_sprite(sample_image_data, tmpdir)
     assert os.path.exists(os.path.join(tmpdir, master_sprite_name)), \
-      f"Expected master sprite as '{master_sprite_name}' in {tmpdir}"
+      (f"Expected master sprite as '{master_sprite_name}' in {tmpdir} which "
+       f"has {os.listdir(tmpdir)}")
 
-    # image = Image.open(os.path.join(tmpdir, master_sprite_name))
-    # assert image.size == (100, 100), (f"Expected '{master_sprite_name}' at "
-    #                                   f"{tmpdir} to match dimensions of 100x100")
+
+def test_valid_keras_model():
+  model_name: str = "model.h5"
+  if not os.path.exists(model_name):
+    model_name = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                              model_name)
+  model = valid_keras_model(model_name)
+  assert model
+
+
+def test_valid_kears_model_invalid_path():
+  model_name: str = "banana.h5"
+  with pytest.raises(argparse.ArgumentTypeError):
+    valid_keras_model(model_name)
