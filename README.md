@@ -52,8 +52,9 @@ Details about the dataset can be found [here](https://github.com/zalandoresearch
 
 These visualisations cover:
 -   [Transformations to input image](#transformations-to-input-image): transforming the input image before it is passed as input to the network
--   [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
 -   [Class activation map](#class-activation-map): a heatmap overlaid on the input image to see where the network is paying 'Attention'
+-   [Confusion matrix](#confusion-matrix): a matrix showing the model's performance on the different classes compared to the true classes
+-   [Layer activations](#layer-activations): output of each feature map of each layer in the network for a single input
 -   [Live Demo](http://projector.tensorflow.org/?config=https://raw.githubusercontent.com/insectatorious/fashion_mnist_demo/master/tensorboard_assets/config_github.json): exporting embedded vectors for each input in the test set for visualistion and analysis in Tensorboard Projector
 
 ## Usage
@@ -144,6 +145,14 @@ The model only accepts greyscale images with a resolution of `28 x 28` so all in
 before they can be sent to the model.
 
 ### Class Activation Map
+A class activation map for a particular category indicates the discriminative image regions used by the CNN to identify that category. 
+The procedure for generating a CAM (from [Learning Deep Features for Discriminative Localization](http://cnnlocalization.csail.mit.edu/)) is illustrated below:
+
+<img src="http://cnnlocalization.csail.mit.edu/framework.jpg" width="500">
+
+_Source: <http://cnnlocalization.csail.mit.edu/>_
+
+#### Fashion MNIST CNN Class Activation Map
 
 | Input To Model | Class Activation Map | 
 | -------------- | -------------------- |
@@ -161,8 +170,10 @@ Rows represent the true class labels whilst the columns represent the model's pr
 
 This matrix provides visibility on the classes the model is 'struggling' to classify correctly.
 In this case the 'Shirt' & 'Coat' classes have the worst accuracy (72% & 80% respectively).
+A large number (11%) of 'Shirt' images are misclassified as 'T-shirt/top'.
+Whilst understandable as the distinction between these classes is not as stark as the other classes, the model is still expected to perform reasonably on these classes.
 Conversely, the 'Trousers' & 'Bag' classes have the best accuracy (99%).
-[Data augmentation](https://bair.berkeley.edu/blog/2019/06/07/data_aug/) is likely to help improve the model's performance on the former pair of classes.
+[Data augmentation](https://bair.berkeley.edu/blog/2019/06/07/data_aug/) is likely to help improve the model's performance, especially on the former pair of classes.
 
 ### Layer Activations
 The transformed image (as detailed above) passes through the network and each of the feature maps in each layers extracts some features from it. The lower layers of the network (CNN Layer 1 & 2 below :point_down:) typically end up as edge detectors. Specifically they look for certain kinds of edges that are of 'use' to the layers deeper in the network. Layers futher down in the network use these features to activate when certain criteria is met. For example, the first few layers of feature maps might activate on a pair of curved edges near the top middle of the image (like seen in the handle of a bag. Higher layers will then activate when seeing these features to indicate that there is strong probability that a bag's handle is visible in the image. Eventually the final few layers will activate to indicate a 'Bag' class if all the collection of features most closely match a bag (a handle, a solid shape in the middle etc). 
