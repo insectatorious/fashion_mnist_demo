@@ -159,6 +159,7 @@ def create_sprite(data: np.ndarray) -> np.ndarray:
     data = np.tile(data[..., np.newaxis], (1, 1, 1, 3))
 
   n = int(np.ceil(np.sqrt(data.shape[0])))
+  n = np.min([n, 8192])
   padding = ((0, n ** 2 - data.shape[0]), (0, 0), (0, 0), (0, 0))
   data = np.pad(data, padding, mode='constant',
                 constant_values=0)
