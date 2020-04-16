@@ -8,3 +8,4 @@ __pycache__/
 .DS_Store
 raw_tensors.tsv
 .pytest_cache
+.hypothesis
