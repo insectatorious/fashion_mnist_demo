@@ -1,6 +1,8 @@
 language: python
 python:
   - "3.7"
+env:
+  - PYTHONPATH=./fashion_mnist_vis
 # command to install dependencies
 install:
   - pip install -r requirements.txt
