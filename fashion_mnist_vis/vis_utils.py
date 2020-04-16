@@ -19,7 +19,6 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 
 
 def plot_confusion_matrix(cm, class_names):
-  """"""
   """Returns a matplotlib figure containing the plotted confusion matrix.
 
   Args:
