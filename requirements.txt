@@ -4,5 +4,8 @@ pandas
 matplotlib
 scikit-learn
 pydot
+pytest
 pillow
-tensorflow-cpu==2.1
+tensorflow-cpu~=2.1.0
+coverage
+coveralls

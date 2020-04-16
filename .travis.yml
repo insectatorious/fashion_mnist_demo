@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.7"
+env:
+  - PYTHONPATH=./fashion_mnist_vis
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+# command to run tests
+script:
+  - coverage run -m pytest
+after_success:
+  - coveralls

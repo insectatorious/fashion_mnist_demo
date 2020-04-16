@@ -5,6 +5,9 @@ from datetime import datetime
 
 import numpy as np
 import tensorflow as tf
+from sklearn.metrics import confusion_matrix
+
+from vis_utils import plot_confusion_matrix, class_names, save_feature_map
 
 
 tf.random.set_seed(42)
@@ -87,3 +90,10 @@ tf.keras.utils.plot_model(model,
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 print(test_acc, test_loss)
 
+test_pred_raw = model.predict(test_images)
+test_pred = np.argmax(test_pred_raw, axis=1)
+
+# Calculate the confusion matrix.
+cm = confusion_matrix(test_labels, test_pred, normalize="all")
+fig = plot_confusion_matrix(cm, class_names)
+save_feature_map(fig, logdir, "confusion_matrix.png")

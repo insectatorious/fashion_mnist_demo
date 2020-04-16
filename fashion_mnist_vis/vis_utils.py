@@ -19,10 +19,10 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 
 
 def plot_confusion_matrix(cm, class_names):
-  """
-  Returns a matplotlib figure containing the plotted confusion matrix.
+  """Returns a matplotlib figure containing the plotted confusion matrix.
 
   Args:
+  ----
     cm (array, shape = [n, n]): a confusion matrix of integer classes
     class_names (array, shape = [n]): String names of the integer classes
   """
@@ -134,12 +134,16 @@ def plot_cam(img: np.ndarray,
 
 
 def convert_image_to_greyscale(image: Image) -> Image:
-  """Converts an image to greyscale.
+  """Converts an Image to greyscale.
 
   See https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#PIL.Image.Image.convert
 
-  :param image: PIL.Image
-  :return: PIL.Image (greyscale)
+  Args:
+  ----
+    image: PIL.Image
+
+  Returns: PIL.Image
+
   """
   return image.convert('L')
 
@@ -149,9 +153,6 @@ def scale_image_for_model(image: Image, dim: int = 28) -> Image:
 
 
 def create_sprite(data: np.ndarray) -> np.ndarray:
-  """Tile images into sprite image.
-  Add any necessary padding
-  """
 
   # For B&W or greyscale images
   if len(data.shape) == 3:
@@ -173,5 +174,5 @@ def create_sprite(data: np.ndarray) -> np.ndarray:
 
 def create_master_sprite(images: np.ndarray, output_dir: str) -> None:
   sprite = create_sprite(images)
-  sprite = Image.fromarray(sprite)
+  sprite = Image.fromarray(sprite, "RGB")
   sprite.save(os.path.join(output_dir, "master.jpg"))
