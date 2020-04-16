@@ -19,9 +19,11 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 
 
 def plot_confusion_matrix(cm, class_names):
+  """"""
   """Returns a matplotlib figure containing the plotted confusion matrix.
 
   Args:
+  ----
     cm (array, shape = [n, n]): a confusion matrix of integer classes
     class_names (array, shape = [n]): String names of the integer classes
   """
@@ -138,6 +140,7 @@ def convert_image_to_greyscale(image: Image) -> Image:
   See https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#PIL.Image.Image.convert
 
   Args:
+  ----
     image: PIL.Image
 
   Returns: PIL.Image
