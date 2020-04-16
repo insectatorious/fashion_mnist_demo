@@ -50,3 +50,18 @@ def create_sprite_ndarray_assertions(sample_image_data):
                                  f" shape is {sprite.shape}")
   assert sprite.shape[0] == sprite.shape[1], (f"Expected sprite image to be "
                                               f"square, got {sprite.shape}")
+
+
+def test_create_master_sprite():
+  # 9 colour images of 100x100 resolution
+  sample_image_data = np.random.randint(low=0, high=255, size=(9, 100, 100, 3))
+  master_sprite_name: str = "master.jpg"
+
+  with TemporaryDirectory() as tmpdir:
+    create_master_sprite(sample_image_data, tmpdir)
+    assert os.path.exists(os.path.join(tmpdir, master_sprite_name)), \
+      f"Expected master sprite as '{master_sprite_name}' in {tmpdir}"
+
+    # image = Image.open(os.path.join(tmpdir, master_sprite_name))
+    # assert image.size == (100, 100), (f"Expected '{master_sprite_name}' at "
+    #                                   f"{tmpdir} to match dimensions of 100x100")
