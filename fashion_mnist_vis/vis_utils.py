@@ -174,5 +174,5 @@ def create_sprite(data: np.ndarray) -> np.ndarray:
 
 def create_master_sprite(images: np.ndarray, output_dir: str) -> None:
   sprite = create_sprite(images)
-  sprite = Image.fromarray(sprite)
+  sprite = Image.fromarray(sprite, "RGB")
   sprite.save(os.path.join(output_dir, "master.jpg"))
