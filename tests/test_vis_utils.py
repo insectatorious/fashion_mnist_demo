@@ -5,9 +5,10 @@ from tempfile import TemporaryDirectory
 
 import numpy as np
 import pytest
+import matplotlib.pyplot as plt
 from PIL import Image
 
-from vis_utils import scale_image_for_model, valid_keras_model
+from vis_utils import scale_image_for_model, valid_keras_model, save_feature_map
 from vis_utils import convert_image_to_greyscale
 from vis_utils import create_sprite
 from vis_utils import create_master_sprite
@@ -80,3 +81,14 @@ def test_valid_kears_model_invalid_path():
   model_name: str = "banana.h5"
   with pytest.raises(argparse.ArgumentTypeError):
     valid_keras_model(model_name)
+
+
+def test_save_feature_map():
+  fig = plt.figure()
+  filename = "banana.jpg"
+  with TemporaryDirectory() as tmpdir:
+    save_feature_map(fig=fig, output_dir=tmpdir, fname=filename)
+    assert os.path.exists(os.path.join(tmpdir, filename)), \
+      (f"Expected '{filename}' to be in '{tmpdir}' which has "
+       f"'{os.listdir(tmpdir)}'")
+
