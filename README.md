@@ -62,7 +62,7 @@ A Python virtual environment (see [this guide](https://docs.python-guide.org/dev
 
 A full list of requirements can be found in [`requirements.txt`](./requirements.txt). Additionally `graphviz` is required for plotting the model's structure (this is an OS level install). The main dependencies of note are:
 
--   Python 3
+-   Python 3.7
 -   TensorFlow 2.x
 -   pillow (used for image loading, greyscale conversions and resizing)
 -   pydot & graphviz (used for plotting model structure)
@@ -125,7 +125,7 @@ A simple, sequential Convolutional Neural Network with [Batch Normalisation](htt
 
 ## Network Layer Visualisations
 
-#### Input Image
+### Input Image
 A black handbag from Argos is chosen as our input - [KIPLING Black Art Mini Handbag - One Size](https://www.argos.co.uk/product/tuc135958689)
 
 ![Input Image](docs/images/visualisations/input_image.png)
@@ -134,25 +134,25 @@ Model classification: `Bag` with a score of `0.9213`.
 
 Image is from an Argos product page so out of the train and test datasets. This is a crucial validation of the model's ability to generalise and work on data that's not restricted to the dataset itself. CNNs have tremendous memorisation capabilities and seeing its ability to correctly classify data that is from a different source (but still in line with the training dataset's patterns) is fundamental to proving its effectiveness.
 
-#### Transformations To Input Image
+### Transformations To Input Image
 The model only accepts greyscale images with a resolution of `28 x 28` so all input images will need to be 
 -   converted to greyscale
 -   resized to `28 x 28`
 
 before they can be sent to the model.
 
-#### Class Activation Map
+### Class Activation Map
 
-Input To Model | Class Activation Map 
----------------|---------------------
+| Input To Model | Class Activation Map | 
+| -------------- | -------------------- |
 <img src="docs/images/visualisations/rescaled_model_input.png" width="100"> | <img src="docs/images/visualisations/cam.png" width="100"> 
 
 Looking at the activation map :thinking:, it appears the model is paying attention to the *handle of the bag* in making it's classification (along with the absence of anything above the handle).
 
-#### Layer Activations
+### Layer Activations
 The transformed image (as detailed above) passes through the network and each of the feature maps in each layers extracts some features from it. The lower layers of the network (CNN Layer 1 & 2 below :point_down:) typically end up as edge detectors. Specifically they look for certain kinds of edges that are of 'use' to the layers deeper in the network. Layers futher down in the network use these features to activate when certain criteria is met. For example, the first few layers of feature maps might activate on a pair of curved edges near the top middle of the image (like seen in the handle of a bag. Higher layers will then activate when seeing these features to indicate that there is strong probability that a bag's handle is visible in the image. Eventually the final few layers will activate to indicate a 'Bag' class if all the collection of features most closely match a bag (a handle, a solid shape in the middle etc). 
 
-##### CNN Layer Activations
+#### CNN Layer Activations
 
 | CNN Layer 1 | CNN Layer 2 |
 |   :---:   |   :---:   |
@@ -222,8 +222,10 @@ The vectors visualised here are exported using the model `model.h5`, saved in th
 ## Experimental
 
 Code with interesting results is located in the [./fashion_mnist_vis/experimental](./fashion_mnist_vis/experimental) folder. 
+
 For instance using the webcam to classify a livestream using the trained Fashion MNIST model.
 See the [Experimental README](./fashion_mnist_vis/experimental/README.md) for more information. 
 
+![Webcam Boot Classification](./docs/images/webcam_boot.png)
 ## Licence
 GNU General Public License v3.0
