@@ -151,6 +151,19 @@ before they can be sent to the model.
 
 Looking at the activation map :thinking:, it appears the model is paying attention to the *handle of the bag* in making it's classification (along with the absence of anything above the handle).
 
+### Confusion Matrix
+
+([From Wikipedia](https://en.wikipedia.org/wiki/Confusion_matrix)) a confusion matrix is a specific table layout that allows visualization of the performance of a classification algorithm.
+It allows for a comparison of the model's ability to correctly, or incorrectly, classify certain classes.
+Rows represent the true class labels whilst the columns represent the model's predictions. 
+
+<img src="docs/images/confusion_matrix.png" height="500" width="500">
+
+This matrix provides visibility on the classes the model is 'struggling' to classify correctly.
+In this case the 'Shirt' & 'Coat' classes have the worst accuracy (72% & 80% respectively).
+Conversely, the 'Trousers' & 'Bag' classes have the best accuracy (99%).
+[Data augmentation](https://bair.berkeley.edu/blog/2019/06/07/data_aug/) is likely to help improve the model's performance on the former pair of classes.
+
 ### Layer Activations
 The transformed image (as detailed above) passes through the network and each of the feature maps in each layers extracts some features from it. The lower layers of the network (CNN Layer 1 & 2 below :point_down:) typically end up as edge detectors. Specifically they look for certain kinds of edges that are of 'use' to the layers deeper in the network. Layers futher down in the network use these features to activate when certain criteria is met. For example, the first few layers of feature maps might activate on a pair of curved edges near the top middle of the image (like seen in the handle of a bag. Higher layers will then activate when seeing these features to indicate that there is strong probability that a bag's handle is visible in the image. Eventually the final few layers will activate to indicate a 'Bag' class if all the collection of features most closely match a bag (a handle, a solid shape in the middle etc). 
 
