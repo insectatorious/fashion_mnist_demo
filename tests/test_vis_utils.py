@@ -1,7 +1,13 @@
+import os
+from tempfile import TemporaryDirectory
+
 import numpy as np
 from PIL import Image
 
-from vis_utils import scale_image_for_model, convert_image_to_greyscale, create_sprite
+from vis_utils import scale_image_for_model
+from vis_utils import convert_image_to_greyscale
+from vis_utils import create_sprite
+from vis_utils import create_master_sprite
 
 
 def test_scale_image_for_model():
