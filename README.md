@@ -26,9 +26,11 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 -   [Network Layer Visualisations](#network-layer-visualisations)
     -   [Transformations To Input Image](#transformations-to-input-image)
     -   [Class Activation Map](#class-activation-map)
+    -   [Confusion Matrix](#confusion-matrix)
     -   [Layer Activations](#layer-activations)
     -   [Global Average Pooling & Dense Activations](#global-average-pooling--dense-activations)
 -   [Embedding Vectors](#embedding-vectors)
+    -   [Decision Boundaries](#decision-boundaries)
     -   [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
     -   [t-Distributed Stochastic Neighbour Embedding (t-SNE)](#t-distributed-stochastic-neighbour-embedding-t-sne)
     -   [Custom Projections](#custom-projections-tensorboard-only)
@@ -205,7 +207,24 @@ Note: the Dropout layer is not visualised as it is only used whilst training the
 ## Embedding Vectors
 An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a low-dimensional representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. 
 
+### Decision Boundaries
+
 The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64 dimension vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
+
+Each datapoint represents a single image. It's important to focus on the relative positioning of the data instead of the absolute values. 
+For instance, the three dimensions don't carry any special meaning, they simply represent the most appropriate dimensions to visualise the data (the definition of what constitutes 'most appropriate' is down to each individual algorithm). 
+When examining the visualisations, it is useful to see the separation of the different classes. 
+
+Classes that have a clear [hyperplane](https://en.wikipedia.org/wiki/Hyperplane) separating them are easier for the model to classify (in a way the creation of the hyperplane is the direct result of the training process). 
+These hyperplanes can be viewed as distinct [decision boundaries](https://en.wikipedia.org/wiki/Decision_boundary).
+However, where a clear hyperplane is not visible (like between 'Coat' and 'Shirt') the model will struggle to accurately distinguish between the different classes. 
+
+<img src="https://static.packt-cdn.com/products/9781783980284/graphics/0a28adc5-dd79-4005-82ae-563a6fed0ab1.png" width="500">
+
+Source: [Dealing with nonlinear decision boundaries](https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781783980284/6/ch06lvl1sec34/dealing-with-nonlinear-decision-boundaries)
+
+
+In order to get a sense of the higher dimensional positioning of the datapoints (in this case 64D), a few algorithms are used to provide a mapping between the higher (64D) and lower (3D) dimensions whilst retaining certain characteristics about the datapoints. 
 
 ### Principal Component Analysis (PCA)
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64` dimension embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
