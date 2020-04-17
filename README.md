@@ -214,9 +214,10 @@ The following visualisations are aimed to examining these vectors to understand 
 Each datapoint represents a single image. It's important to focus on the relative positioning of the data instead of the absolute values. 
 For instance, the three dimensions don't carry any special meaning, they simply represent the most appropriate dimensions to visualise the data (the definition of what constitutes 'most appropriate' is down to each individual algorithm). 
 When examining the visualisations, it is useful to see the separation of the different classes. 
+
 Classes that have a clear [hyperplane](https://en.wikipedia.org/wiki/Hyperplane) separating them are easier for the model to classify (in a way the creation of the hyperplane is the direct result of the training process). 
 These hyperplanes can be viewed as distinct [decision boundaries](https://en.wikipedia.org/wiki/Decision_boundary).
-However, where a clear hyperplane is not visisble (like between 'Coat' and 'Shirt') the model will struggle to accurately distinguish between the different classes. 
+However, where a clear hyperplane is not visible (like between 'Coat' and 'Shirt') the model will struggle to accurately distinguish between the different classes. 
 
 <img src="https://static.packt-cdn.com/products/9781783980284/graphics/0a28adc5-dd79-4005-82ae-563a6fed0ab1.png" width="500">
 
