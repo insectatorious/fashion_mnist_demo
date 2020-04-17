@@ -26,6 +26,7 @@ Whilst the network architecture is a simple [Sequential](https://www.tensorflow.
 -   [Network Layer Visualisations](#network-layer-visualisations)
     -   [Transformations To Input Image](#transformations-to-input-image)
     -   [Class Activation Map](#class-activation-map)
+    -   [Confusion Matrix](#confusion-matrix)
     -   [Layer Activations](#layer-activations)
     -   [Global Average Pooling & Dense Activations](#global-average-pooling--dense-activations)
 -   [Embedding Vectors](#embedding-vectors)
