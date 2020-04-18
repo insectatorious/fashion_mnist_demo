@@ -168,7 +168,9 @@ Looking at the activation map :thinking:, it appears the model is paying attenti
 It allows for a comparison of the model's ability to correctly, or incorrectly, classify certain classes.
 Rows represent the true class labels whilst the columns represent the model's predictions. 
 
-<img src="docs/images/confusion_matrix.png" height="500" width="500">
+<p align="center">
+    <img src="docs/images/confusion_matrix.png" height="500" width="500">
+</p>
 
 This matrix provides visibility on the classes the model is 'struggling' to classify correctly.
 In this case the 'Shirt' & 'Coat' classes have the worst accuracy (72% & 80% respectively).
@@ -226,7 +228,9 @@ Classes that have a clear [hyperplane](https://en.wikipedia.org/wiki/Hyperplane)
 These hyperplanes can be viewed as distinct decision boundaries.
 However, where a clear hyperplane is not visible (like between 'Coat' and 'Shirt') the model will struggle to accurately distinguish between the different classes. 
 
-<img src="https://static.packt-cdn.com/products/9781783980284/graphics/0a28adc5-dd79-4005-82ae-563a6fed0ab1.png" width="500">
+<p align="center">
+    <img src="https://static.packt-cdn.com/products/9781783980284/graphics/0a28adc5-dd79-4005-82ae-563a6fed0ab1.png" width="500">
+</p>
 
 Source: [Dealing with nonlinear decision boundaries](https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781783980284/6/ch06lvl1sec34/dealing-with-nonlinear-decision-boundaries)
 
