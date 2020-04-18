@@ -205,18 +205,25 @@ The activations from the previous layer are averaged using a [Global Average Poo
 Note: the Dropout layer is not visualised as it is only used whilst training the network. When making a prediction the network does not perform any function. 
 
 ## Embedding Vectors
-An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a low-dimensional representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. 
+An [embedding vector](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture) provides a vectorised representation of an input datapoint. In the case of this model each input datapoint can be thought of a `28 x 28 = 784` dimensional vector. As this image passes through the network's layers, it is transformed until it is ultimately a `64` dimension vector. This is the penultimate layer in the network and contains enough information about the datapoint to allow the final layer to perform the classification. Examining the quality of these vectors can provide insight into the strengths and weaknesses of the model. For instance, 
+-   does the model classify some images more easily than others?
+-   is there a pattern or common feature amongst images the model is struggling to classify correctly?
+-   is the embedding vector carrying any meaningful representation?
 
 ### Decision Boundaries
 
-The following visualisations are aimed to examining these vectors to understand how the model is 'representing' the images. As we cannot visualise a 64 dimension vector directly, we have to perform some kind of dimensionality reduction to get it down to two or three dimensions.
+When making classifications, the model makes decisions about the class of the image based on the embedding vector.
+A clear separation between two classes in the embedding vector space makes the task simpler for the model. 
+The separation boundary is also known as a [decision boundary](https://en.wikipedia.org/wiki/Decision_boundary) or a [hyperplane](https://en.wikipedia.org/wiki/Hyperplane).
+
+The following visualisations are aimed at examining these embedding vectors to understand how the model is 'representing' the images. As we cannot visualise a `64` dimension vector directly, we have to perform dimensionality reduction to bring the dimensionality down to two or three dimensions. Each dimensionality reduction algorithm has its tradeoffs. [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) and [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) will be used.
 
 Each datapoint represents a single image. It's important to focus on the relative positioning of the data instead of the absolute values. 
-For instance, the three dimensions don't carry any special meaning, they simply represent the most appropriate dimensions to visualise the data (the definition of what constitutes 'most appropriate' is down to each individual algorithm). 
+For instance, the three dimensions don't carry any special meaning, they simply represent the most appropriate dimensions to visualise the data (the definition of what constitutes 'most appropriate' is specific to each individual algorithm). 
 When examining the visualisations, it is useful to see the separation of the different classes. 
 
-Classes that have a clear [hyperplane](https://en.wikipedia.org/wiki/Hyperplane) separating them are easier for the model to classify (in a way the creation of the hyperplane is the direct result of the training process). 
-These hyperplanes can be viewed as distinct [decision boundaries](https://en.wikipedia.org/wiki/Decision_boundary).
+Classes that have a clear [hyperplane](https://en.wikipedia.org/wiki/Hyperplane) or [decision boundary](https://en.wikipedia.org/wiki/Decision_boundary) separating them are easier for the model to classify (the creation of the hyperplane is the direct [result of the training process](https://www.seas.upenn.edu/~cis391/Lectures/perceptrons.pdf)). 
+These hyperplanes can be viewed as distinct decision boundaries.
 However, where a clear hyperplane is not visible (like between 'Coat' and 'Shirt') the model will struggle to accurately distinguish between the different classes. 
 
 <img src="https://static.packt-cdn.com/products/9781783980284/graphics/0a28adc5-dd79-4005-82ae-563a6fed0ab1.png" width="500">
@@ -224,7 +231,7 @@ However, where a clear hyperplane is not visible (like between 'Coat' and 'Shirt
 Source: [Dealing with nonlinear decision boundaries](https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781783980284/6/ch06lvl1sec34/dealing-with-nonlinear-decision-boundaries)
 
 
-In order to get a sense of the higher dimensional positioning of the datapoints (in this case 64D), a few algorithms are used to provide a mapping between the higher (64D) and lower (3D) dimensions whilst retaining certain characteristics about the datapoints. 
+In order to get a sense of the higher dimensional positioning of the datapoints (in this case `64D`), a few algorithms are used to provide a mapping between the higher (`64D`) and lower (`3D`) dimensions whilst retaining certain characteristics about the datapoints. 
 
 ### Principal Component Analysis (PCA)
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) is a simple, powerful algorithm to reduce a high dimensional vector to low dimenions. In the images below, the `64` dimension embedding vector is reduced to 3 dimensions and plotted by Tensorboard. A quick and easy starting point for analysing high dimensional data it does struggle to deal with non-linearity in the higher dimensions. 
