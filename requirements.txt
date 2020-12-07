@@ -6,6 +6,6 @@ scikit-learn
 pydot
 pytest
 pillow
-tensorflow-cpu~=2.1.0
+tensorflow-cpu~=2.4.0
 coverage
 coveralls
